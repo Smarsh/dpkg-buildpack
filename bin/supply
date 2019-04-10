@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eu
+
+BUILD_DIR=$1
+CACHE_DIR=$3
+
+cd "${BUILD_DIR}" || exit 1
+for file in debs/*.deb; do
+  dpkg -x "${file}" "${CACHE_DIR}"
+done
